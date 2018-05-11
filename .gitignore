@@ -26,3 +26,8 @@ hs_err_pid*
 
 # exe file
 *.exe
+
+# incomplete programs
+_*.java
+_*.cpp
+
