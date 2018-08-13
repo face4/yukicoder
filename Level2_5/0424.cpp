@@ -9,9 +9,18 @@ int main(){
     // convert 1-origin to 0-origin
     sx--; sy--; gx--; gy--;
 
-    int G[h][w] = {};
-    bool visit[h][w] = {};
-
+    int G[h][w];
+    for(int i = 0; i < h; i++){
+        for(int j = 0; j < w; j++){
+            G[i][j] = 0;
+        }
+    }
+    bool visit[h][w];
+    for(int i = 0; i < h; i++){
+        for(int j = 0; j < w; j++){
+            visit[i][j] = false;
+        }
+    }
     string t;
     for(int i = 0; i < h; i++){
         cin >> t;
