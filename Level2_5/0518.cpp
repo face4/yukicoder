@@ -16,7 +16,7 @@ int main(){
     o["IV"] = 4;
     o["IX"] = 9;
     o["XL"] = 40;
-    o["XC"] = 40;
+    o["XC"] = 90;
     o["CD"] = 400;
     o["CM"] = 900;
 
@@ -47,8 +47,22 @@ int main(){
         return 0;
     }
 
-    // ここを頑張って
-    cout << endl;
+    string res = "";
+    while(sum >= 1000)  res += "M", sum -= 1000;
+    if(sum >= 900)      res += "CM", sum -= 900;
+    if(sum >= 500)      res += "D", sum -= 500;
+    if(sum >= 400)      res += "CD", sum -= 400;
+    while(sum >= 100)   res += "C", sum -= 100;
+    if(sum >= 90)       res += "XC", sum -= 90;
+    if(sum >= 50)       res += "L", sum -= 50;
+    if(sum >= 40)       res += "XL", sum -= 40;
+    while(sum >= 10)    res += "X", sum -= 10;
+    if(sum >= 9)        res += "IX", sum -= 9;
+    if(sum >= 5)        res += "V", sum -= 5;
+    if(sum >= 4)        res += "IV", sum -= 4;
+    while(sum >= 1)     res += "I", sum -= 1;
+
+    cout << res << endl;
 
     return 0;
 }
