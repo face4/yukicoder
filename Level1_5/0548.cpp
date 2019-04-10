@@ -2,37 +2,27 @@
 using namespace std;
 
 int main(){
-    int A[13] = {};
-    char c;
-    bool isDouble = false;
-    for(; cin >> c;){
-        if(c < 'a' || 'm' < c){
-            cout << "Impossible" << endl;
-            return 0;
-        }
-        int index = (int)(c-'a');
-        A[index]++;
-        if(!isDouble && A[index] == 2){
-            isDouble = true;
-        }else if(isDouble && A[index] == 2){
-            cout << "Impossible" << endl;
-            return 0;
-        }
+    int a[13] = {};
+    string s;
+    cin >> s;
+    for(char c : s){
+        a[c-'a']++;
     }
-
-    if(isDouble){
-        int i;
-        for(i = 0; i < 13; i++){
-            if(A[i] == 0){
-                cout << (char)('a' + i) << endl;
-                return 0;
-            }
-        }
+    int two = 0, one = 0;
+    for(int x : a){
+        if(x == 2)  two++;
+        if(x == 1)  one++;
+    }
+    if(two > 1 || (two == 0 && one != 13) || (two == 1 && one != 11)){
+        cout << "Impossible" << endl;
     }else{
         for(int i = 0; i < 13; i++){
-            cout << (char)('a' + i) << endl;
+            if(two == 1 && a[i] == 0){
+                cout << (char)('a' + i) << endl;
+            }else if(two == 0){
+                cout << (char)('a' + i) << endl;
+            }
         }
     }
-
     return 0;
 }
