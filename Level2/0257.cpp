@@ -3,7 +3,8 @@ using namespace std;
 
 int main(){
     int n, k, my = 0, enemy;
-
+    cin >> n >> k;
+    
     if((n-1)%(k+1) == 0){
         cout << 0 << endl << flush;
     }else{
