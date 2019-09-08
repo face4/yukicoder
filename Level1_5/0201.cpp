@@ -1,35 +1,22 @@
 #include<iostream>
 using namespace std;
 
-int main(){
-    string s1, s2;
-    string yf1, yf2;
-    char hand1, hand2;
-    cin >> s1 >> yf1 >> hand1;
-    cin >> s2 >> yf2 >> hand2;
-    if(yf1.size() == yf2.size()){
-        if(yf1 == yf2){
-            cout << "-1" << endl;
-        }else{
-            int one, two;
-            for(int i = 0; i < yf1.size(); i++){
-                one = (int)(yf1[i] - '0');
-                two = (int)(yf2[i] - '0');
-                if(one != two){
-                    if(one > two){
-                        cout << s1;
-                    }else{
-                        cout << s2;
-                    }
-                    break;
-                }
-            }
-        }
-    }else if(yf1.size() > yf2.size()){
-        cout << s1;
-    }else if(yf1.size() < yf2.size()){
-        cout << s2;
+bool f(string s, string t){
+    if(s.length() < t.length()) return true;
+    if(s.length() > t.length()) return false;
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] == t[i])    continue;
+        return s[i] < t[i];
     }
-    cout << endl;
+}
+
+int main(){
+    string a, b, pa, pb, x;
+    cin >> a >> pa >> x >> b >> pb >> x;
+    if(pa == pb){
+        cout << -1 << endl;
+    }else{
+        cout << (f(pa,pb) ? b : a) << endl;
+    }
     return 0;
 }
