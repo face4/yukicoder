@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 typedef long long ll;
@@ -29,6 +30,8 @@ int main(){
         }
     }
 
+    for(int i = 1; i < 11; i++) sort(hash[i].begin(),hash[i].end());
+
     int m;
     cin >> m;
 
@@ -41,7 +44,7 @@ int main(){
         for(int j = 0; j < clen; j++){
             target = target*26 + (c[j]-'A');
         }
-        for(ll h : hash[clen])  ans += (target == h);
+        ans += upper_bound(hash[clen].begin(),hash[clen].end(),target)-lower_bound(hash[clen].begin(),hash[clen].end(),target);
     }
 
     cout << ans << endl;
