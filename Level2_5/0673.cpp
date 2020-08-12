@@ -1,4 +1,3 @@
-// mod本当にめんどくさい
 #include<iostream>
 using namespace std;
 
@@ -21,15 +20,18 @@ int main(){
     ll b, c, d;
     cin >> b >> c >> d;
 
-    b %= mod;
-
-    if(c == 1){
-        cout << (b*(d%mod))%mod << endl;
+    if(c%mod == 1){
+        cout << (b%mod)*(d%mod)%mod << endl;
         return 0;
     }
 
-    ll ans = ( (modpow(c,d,mod)%mod *( ((c-1)%mod*b+b)%mod)%mod +mod-b )%mod * modpow(c-1,mod-2,mod)%mod + mod - b)%mod;
-    
-    cout << ans << endl;
+    ll f = (b%mod)*(c%mod)%mod;
+
+    ll alpha = (mod-f) % mod * modpow((c-1)%mod, mod-2, mod) % mod;
+
+    ll ans = ((f-alpha+mod)%mod * modpow(c%mod, d-1, mod) % mod + alpha) % mod;
+
+    cout << ans%mod << endl;
+
     return 0;
 }
